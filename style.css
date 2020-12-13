@@ -26,6 +26,8 @@
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
   outline: none;
+  transition: all 0.1s ease-in-out;
+  transition-property: color, background-color, border-color, box-shadow;
 }
 
 body {
@@ -62,11 +64,17 @@ form {
   background: var(--v-l-gray);
   border-radius: 6px;
   padding: 0 1.25rem;
+  max-width: 1200px;
+}
+
+.title{
+  max-width: 1100px;
+
 }
 
 form input {
   margin-left: 0.75rem;
-  background: var(--v-l-gray);
+  background-color: var(--v-l-gray);
   height: 100%;
   width: 100%;
   border: none;
@@ -82,9 +90,10 @@ input::placeholder {
 }
 
 .card {
-  background: var(--v-l-gray);
+  background-color: var(--v-l-gray);
   border-radius: 6px;
   margin-top: 1rem;
+  max-width: 500px;
 }
 
 .todo-item,
@@ -138,7 +147,8 @@ input::placeholder {
 }
 
 .dark-theme .checkbox {
-  border: 1px solid var(--v-l-grayish-blue);
+  border: 1px solid;
+  border-color: var(--v-l-grayish-blue);
 }
 
 /* .todo-item:hover .checkbox {
@@ -161,7 +171,6 @@ input::placeholder {
   padding: 0 1.25rem;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid var(--v-l-grayish-blue);
   color: var(--d-grayish-blue);
 }
 
@@ -193,7 +202,7 @@ input::placeholder {
 }
 
 button:hover {
-  color: var(--v-d-grayish-blue);
+  color: var(--primary);
 }
 
 .tabs .active-tab:hover {
@@ -213,4 +222,28 @@ button:hover {
 
 .item-list.active {
   display: block;
+}
+
+@media only screen and (min-width: 800px) {
+  .background {
+    background: url("./images/bg-desktop-light.jpg") no-repeat 50% 50% / cover;
+    height: 35vh;
+  }
+
+  .card, form, .tabs{
+    margin: 1rem 12rem;
+    max-width:%;
+
+  }
+
+  .theme-changer{
+    margin: 0 12rem;
+  }
+
+  .title{
+    margin-left: 12rem;
+  }
+
+
+
 }
