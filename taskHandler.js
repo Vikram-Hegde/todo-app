@@ -106,60 +106,38 @@ function addNewTask(e) {
 formInput.addEventListener("submit", addNewTask);
 
 function changeStatus(e) {
+  let target;
   if (
     !e.target.classList.contains("checkbox") &&
     !e.target.classList.contains("icon-check")
   )
     return;
-  // const target =
-  //   e.target.nextElementSibling.innerText ||
-  //   e.target.parentElement.nextElementSibling.innerText;
-  // tasks.forEach((task) => {
-  //   if (task.task === target) {
-  //     task.completed = !task.completed;
-  //   }
-  // });
-  // renderTasks();
-}
-
-function changeStatus(e) {
-  if (e.target.classList.contains("checkbox")) {
-    const target = e.target.nextElementSibling.innerText;
-    tasks.forEach((task) => {
-      if (task.task === target) {
-        task.completed = !task.completed;
-      }
-    });
-    renderTasks();
-  }
-
-  if (e.target.classList.contains("icon-check")) {
-    const target = e.target.parentElement.nextElementSibling.innerText;
-    tasks.forEach((task) => {
-      if (task.task === target) {
-        task.completed = !task.completed;
-      }
-    });
-    renderTasks();
-  }
+  if (e.target.classList.contains("checkbox"))
+    target = e.target.nextElementSibling.innerText;
+  else if (e.target.classList.contains("icon-check"))
+    target = e.target.parentElement.nextElementSibling.innerText;
+  tasks.forEach((task) => {
+    if (task.task === target) {
+      task.completed = !task.completed;
+    }
+  });
+  renderTasks();
 }
 card.addEventListener("click", changeStatus);
 
 const removeCompleted = () => {
-  tasks = tasks.filter((task) => !task.completed);
+  tasks = tasks.filter(({ completed }) => !completed);
   renderTasks();
 };
 clearCompletedBtn.addEventListener("click", removeCompleted);
 
 function deleteTask(e) {
   if (e.target.classList.contains("close-icon")) {
-    tasks = tasks.filter((task) => {
-      return !(
-        task.task === e.target.parentElement.previousElementSibling.textContent
-      );
-    });
+    tasks = tasks.filter(
+      ({ task }) =>
+        !(task === e.target.parentElement.previousElementSibling.textContent)
+    );
     renderTasks();
   }
 }
-
 itemLists.forEach((list) => list.addEventListener("click", deleteTask));

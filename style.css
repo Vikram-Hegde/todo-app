@@ -36,6 +36,22 @@ body {
   background: var(--v-l-grayish-blue);
 }
 
+body.dark-theme .icon-moon {
+  display: none;
+}
+
+body.dark-theme .icon-sun {
+  display: block;
+}
+
+body.light-theme .icon-moon {
+  display: block;
+}
+
+body.light-theme .icon-sun {
+  display: none;
+}
+
 .background {
   position: absolute;
   top: 0;
@@ -67,9 +83,8 @@ form {
   max-width: 1200px;
 }
 
-.title{
+.title {
   max-width: 1100px;
-
 }
 
 form input {
@@ -93,7 +108,20 @@ input::placeholder {
   background-color: var(--v-l-gray);
   border-radius: 6px;
   margin-top: 1rem;
-  max-width: 500px;
+  height: 40vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card__footer {
+  margin-top: auto;
+  border-top: 1px solid;
+  border-color: var(--v-l-grayish-blue);
+  position: sticky;
+  bottom: 0;
+  background-color: var(--v-l-gray);
 }
 
 .todo-item,
@@ -230,20 +258,12 @@ button:hover {
     height: 35vh;
   }
 
-  .card, form, .tabs{
-    margin: 1rem 12rem;
-    max-width:%;
-
+  .wrapper {
+    max-width: 600px;
+    margin: 0 auto;
   }
 
-  .theme-changer{
-    margin: 0 12rem;
+  .card {
+    width: 100%;
   }
-
-  .title{
-    margin-left: 12rem;
-  }
-
-
-
 }
